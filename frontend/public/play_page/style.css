@@ -28,33 +28,68 @@ body {
   background-size: 100% 100%;
 }
 
-button{
-  border-radius: 19px;
-  background-color: antiquewhite;
+.game-layout {
+  display: flex;
+  justify-content: space-between;
   
+  width: 80%;
+  padding: 20px;
 }
 
-.game-info {
-  font-size: 30px;
+
+.left-side {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 30px;
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.8);
+    /* Light transparent background */
+  border-radius: 10px;
+  margin: 5vw 3vw 10vw 3vw;
+  padding: 5vw 2vw 5vw 2vw;
+  
+
+}
+/* .button-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+.right-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button{
+  border-radius: 19px;
+  background-color: wheat;
+  
+}
+
+.game-info {
+  font-size: 7vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  color: rgba(7, 163, 17, 0.829);
   
 }
 
 #startButton {
   margin-bottom: 20px;
   padding: 10px;
-  font-size: 16px;
+  font-size: 2rem;
   cursor: pointer;
 }
 
 #endButton {
   margin-bottom: 20px;
   padding: 10px;
-  font-size: 16px;
+  font-size: 2rem;
   cursor: pointer;
 }
 

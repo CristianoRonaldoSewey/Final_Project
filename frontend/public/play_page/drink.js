@@ -18,16 +18,46 @@ document.addEventListener("DOMContentLoaded", function () {
   let gameOver = true;
 
   function activateRushHour() {
-    isRushHour = true;
-    scoreDisplay.style.color = "red"; // Indicate rush hour with text color change
-    gameContainer.classList.add("rush-blur"); // Apply blur effect to the game container
+    isRushHour = true; // Indicate that rush hour is on
+    scoreDisplay.style.color = "red";
+    gameContainer.classList.add("rush-blur"); // Optional visual indication
 
+    // Start the switching process only during rush hour
+    rushHourSwitchInterval = setInterval(switchDuringRushHour, 1000); // Switch every second
+
+    // Schedule the end of rush hour
     rushHourTimeout = setTimeout(() => {
-      isRushHour = false;
-      scoreDisplay.style.color = "#333"; // Revert text color
-      gameContainer.classList.remove("rush-blur"); // Remove blur effect
-    
-    }, 6000); // 6-second rush hour duration
+      isRushHour = false; // Rush hour ends
+      clearInterval(rushHourSwitchInterval); // Stop switching
+      scoreDisplay.style.color = "rgb(96, 217, 15)";
+      gameContainer.classList.remove("rush-blur"); // Optional visual indication
+    }, 6000); // Rush hour lasts 6 seconds
+  }
+  function switchDuringRushHour() {
+    if (isRushHour) {
+      // Clear all previous moles to ensure they do not persist
+      holes.forEach((hole) => {
+        hole.classList.remove("mole", "milk");
+        hole.removeEventListener("click", handleMoleClick);
+        hole.removeEventListener("click", handleMilkClick);
+      });
+
+      // Add milk to a random hole during rush hour
+      const randomMilkHole = holes[Math.floor(Math.random() * holes.length)];
+      randomMilkHole.classList.add("milk");
+      randomMilkHole.addEventListener("click", handleMilkClick);
+
+      const randomMoleHole = holes[Math.floor(Math.random() * holes.length)];
+      randomMoleHole.classList.add("mole");
+      randomMoleHole.addEventListener("click", handleMoleClick);
+      
+
+      // Remove milk after 1 second
+      setTimeout(() => {
+        randomMilkHole.classList.remove("milk");
+        randomMilkHole.removeEventListener("click", handleMilkClick);
+      }, 1000);
+    }
   }
 
   function comeoutMole() {
@@ -51,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     randomMilkHole.classList.add("milk");
     randomMilkHole.addEventListener("click", handleMilkClick); // Re-add event listener
   }
-  
+
   function comeoutWine() {
     holes.forEach((hole) => {
       hole.classList.remove("wine");
@@ -70,14 +100,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function handleMoleClick() {
     if (!gameOver) {
-      const pointIncrement = isRushHour ? 2 : 1; // Double points during rush hour
+      const pointIncrement = isRushHour ? -2 : 1; // Double points during rush hour
       score += pointIncrement;
       scoreDisplay.textContent = `Score: ${score}`;
 
       if (!isRushHour) {
         normalScoreCounter += pointIncrement;
 
-        if (normalScoreCounter >= 8) { // Activate rush hour when reaching 8 points
+        if (normalScoreCounter >= 8) {
+          // Activate rush hour when reaching 8 points
           normalScoreCounter = 0;
           activateRushHour(); // Start rush hour
         }
@@ -89,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function handleMilkClick() {
     if (!gameOver) {
       // If we're in rush hour, subtract two points; otherwise, subtract one
-      const penalty = isRushHour ? 2 : 1;
+      const penalty = isRushHour ? -2 : 1;
       score -= penalty; // Decrement the score based on the current state
       scoreDisplay.textContent = `Score: ${score}`; // Update the score display
 
@@ -99,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function handleWineClick() {
     if (!gameOver) {
-      const pointIncrementW = isRushHour ? 6 : 3; // Double points during rush hour
+      const pointIncrementW = isRushHour ? 8 : 4; // Double points during rush hour
       score += pointIncrementW;
       scoreDisplay.textContent = `Score: ${score}`;
 
@@ -121,9 +152,8 @@ document.addEventListener("DOMContentLoaded", function () {
       return; // Prevent starting if already in progress
     }
     if (rushHourTimeout) {
-    clearTimeout(rushHourTimeout);
-  }
-
+      clearTimeout(rushHourTimeout);
+    }
 
     gameOver = false;
     score = 0;
@@ -148,7 +178,13 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }, 1000);
 
-    moleInterval = setInterval(comeoutMole, 1000); // Mole appears every second
+    moleInterval = setInterval(() => {
+      if (isRushHour) {
+        switchMoleOrMilk(); // Switch between mole and milk during rush hour
+      } else {
+        comeoutMole(); // Normal mode, only moles
+      }
+    }, 1000);
     milkInterval = setInterval(comeoutMilk, 3000); // Milk appears every 4 seconds
     wineInterval = setInterval(comeoutWine, 6000);
   }
@@ -161,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function () {
     clearTimeout(rushHourTimeout); // Clear rush hour timeout
     alert(`Game Ended!\nYour final score: ${score}`);
     startButton.disabled = false; // Enable the start button after game ends
-    endButton.disabled = true  
+    endButton.disabled = true;
   }
 
   startButton.addEventListener("click", startGame);
