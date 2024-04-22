@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Grab-A-Drink</title>
+  <h1 id="Title" style="color: rgb(61, 244, 238);">Grab-A-Drink</h1>
+  
+</head>
+
+<body>
+  <div class="game-layout">
+    <!-- Left Side: game-info and button-container -->
+    <div class="left-side">
+      <div class="game-info">
+        <div id="score">Score: 0</div>
+        <div id="timer">Time: 60s</div>
+      </div>
+      <div class="button-container">
+        <button id="startButton">Start</button>
+        <button id="endButton" disabled>End</button>
+      </div>
+    </div>
+  <div class="right-side">
+    <div class="game-container" id="gameContainer">
+      <div class="hole" id="hole1"></div>
+      <div class="hole" id="hole2"></div>
+      <div class="hole" id="hole3"></div>
+      <div class="hole" id="hole4"></div>
+      <div class="hole" id="hole5"></div>
+      <div class="hole" id="hole6"></div>
+      <div class="hole" id="hole7"></div>
+      <div class="hole" id="hole8"></div>
+      <div class="hole" id="hole9"></div>
+    </div>
+  </div>
+  <script src="drink.js"></script>
+</body>
+
+</html>
