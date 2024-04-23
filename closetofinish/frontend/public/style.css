@@ -1,0 +1,441 @@
+@import url("https://fonts.googleapis.com/css2?family=Mitr:wght@200;400;600&display=swap");
+
+body {
+  font-family: "Mitr", sans-serif;
+}
+
+#Title{
+  font-size: 3vw;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  text-shadow: 0 0 3px #000000, 0 0 30px  #e2fb02;
+}
+.button-container button{
+  margin-right: 2vw;
+}
+body {
+  
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("./img/bar.jpg");
+  height: 100%;
+  -webkit-backdrop-filter: blur(3px);
+  margin: 0px;
+  backdrop-filter: blur(3px);
+  background-size: 100% 100%;
+}
+
+.game-layout {
+  display: flex;
+  justify-content: space-between;
+  
+  width: 80%;
+  padding: 20px;
+}
+
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  background: rgba(255, 255, 255, 0.8);
+    /* Light transparent background */
+  border-radius: 10px;
+  margin: 5vw 3vw 10vw 3vw;
+  padding: 5vw 2vw 5vw 2vw;
+  width: 12vw;
+
+}
+/* .button-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+.right-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button{
+  border-radius: 19px;
+  background-color: wheat;
+  
+}
+
+.game-info {
+  font-size: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  color: rgba(7, 163, 17, 0.829);
+  
+}
+
+#startButton {
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 1.5vw;
+  cursor: pointer;
+}
+
+#endButton {
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 1.5vw;
+  cursor: pointer;
+}
+
+.game-container {
+  background-color: rgb(155, 92, 9);
+  display: grid;
+  grid-template-columns: repeat(3, 20vh);
+  column-gap:5vw;
+  row-gap: 2vh;
+  border: 2px solid rgb(106, 37, 2);
+  box-shadow: 0px 0px 10px 3px rgb(0, 0, 0);
+  padding: 2vw 2vw 2vw 2vw;
+  border-radius: 10px;
+  margin-bottom: 10vh;
+}
+
+.hole {
+  height: 150px;
+  background-image: url("./img/beer-off.png");
+  background-size: 100% 100%;
+  background-position: 0.5vw;
+  border: 5px solid rgb(30, 30, 30);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.mole {
+  background-size: 100% 100%;
+  background-position: 0.5vw;
+  background-image: url("./img/beer-on.png");
+}
+
+.milk{
+  background-size: 100% 100%;
+  background-position: 0.5vw;
+  background-image: url("./img/milk.png");
+}
+
+.wine{
+  background-size: 100% 100%;
+  background-position: 0.5vw;
+  background-image: url("./img/wine.png");
+}
+
+.rush-blur {
+  filter: blur(5px);
+  /* Blur effect during rush hour */
+}
+
+#main-table{
+  overflow-x: scroll;
+  overflow-y: auto;  
+  
+}
+
+.Leaderboard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  background: rgba(255, 255, 255, 0.8);
+
+  border-radius: 10px;
+  margin: 5vw 3vw 10vw 3vw;
+  padding: 2vw 2vw 5vw 2vw;
+}
+
+@media only screen and (max-width: 1025px) {
+  #Title {
+      font-size: 9vw;
+      margin-bottom: -2%;
+      margin-top: 6%;
+      text-shadow: 0 0 3px #000000, 0 0 30px #e2fb02;
+    }
+  
+    .button-container button {
+      margin-right: 2vw;
+    }
+  
+    body {
+  
+  
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-image: url("./img/bar.jpg");
+      height: 100%;
+      -webkit-backdrop-filter: blur(3px);
+      margin: 0px;
+      backdrop-filter: blur(3px);
+      background-size: 100% 100%;
+    }
+  
+    .game-layout {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      width: 80%;
+      padding: 20px;
+    }
+  
+  
+    .left-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2vw;
+      background: rgba(255, 255, 255, 0.8);
+      /* Light transparent background */
+      border-radius: 10px;
+      margin: 2vw 2vw 10vw 3vw;
+      padding: 2vw 2vw 2vw 2vw;
+  
+  
+    }
+  
+    /* .button-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
+    .right-side {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 12vw;
+      padding-bottom: 3vh;
+    }
+  
+    button {
+      border-radius: 19px;
+      background-color: wheat;
+  
+    }
+  
+    .game-info {
+      font-size: 4.5vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: rgba(7, 163, 17, 0.829);
+    }
+  
+    #startButton {
+      margin-bottom: 1vw;
+      padding: 2vw;
+      font-size: 3vw;
+      cursor: pointer;
+    }
+  
+    #endButton {
+      margin-bottom: 1vw;
+      padding: 2vw;
+      font-size: 3vw;
+      cursor: pointer;
+    }
+  
+    .game-container {
+      background-color: rgb(155, 92, 9);
+      display: grid;
+      grid-template-columns: repeat(3, 160px);
+      column-gap: 5vw;
+      row-gap: 2vh;
+      border: 2px solid rgb(106, 37, 2);
+      box-shadow: 0px 0px 10px 3px rgb(0, 0, 0);
+      padding: 3vw 3vw 3vw 3vw;
+      border-radius: 10px;
+      margin-bottom: 10vw;
+    }
+  
+    .hole {
+      height: 16vw;
+      background-image: url("./img/beer-off.png");
+      background-size: 100% 100%;
+      background-position: 0.5vw;
+      border: 5px solid rgb(30, 30, 30);
+      cursor: pointer;
+      border-radius: 75px;
+    }
+  
+    .mole {
+      background-size: 100% 100%;
+      background-position: 0.5vw;
+      background-image: url("./img/beer-on.png");
+    }
+  
+    .milk {
+      background-size: 100% 100%;
+      background-position: 0.5vw;
+      background-image: url("./img/milk.png");
+    }
+  
+    .wine {
+      background-size: 100% 100%;
+      background-position: 0.5vw;
+      background-image: url("./img/wine.png");
+    }
+  
+    .rush-blur {
+      filter: blur(5px);
+      /* Blur effect during rush hour */
+    }}
+
+@media only screen and (max-width: 431px) {
+    #Title {
+      font-size: 10vw;
+      margin-bottom: -2%;
+      margin-top: 6%;
+      text-shadow: 0 0 3px #000000, 0 0 30px #e2fb02;
+    }
+
+    .button-container button {
+      margin-right: 2vw;
+    }
+
+    body {
+
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-image: url("./img/bar.jpg");
+      background-size: cover;
+      height: 100%;
+      -webkit-backdrop-filter: blur(3px);
+      margin: 0px;
+      backdrop-filter: blur(3px);
+      background-size: 100% 100%;
+    }
+
+    .game-layout {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      width: 80%;
+      padding: 20px;
+    }
+
+
+    .left-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2vh;
+      background: rgba(255, 255, 255, 0.8);
+      /* Light transparent background */
+      border-radius: 10px;
+      margin: 2vh 2vh 10vh 3vh;
+      padding: 5vh 2vh 5vh 2vh;
+
+
+    }
+
+    /* .button-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+    .right-side {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 12vh;
+      padding-bottom: 0vw;
+    }
+
+    button {
+      border-radius: 19px;
+      background-color: wheat;
+
+    }
+
+    .game-info {
+      font-size: 4.5vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: rgba(7, 163, 17, 0.829);
+    }
+
+    #startButton {
+      margin-bottom: 1vw;
+      padding: 1vw;
+      font-size: 3vh;
+      cursor: pointer;
+    }
+
+    #endButton {
+      margin-bottom: 1vw;
+      padding: 1vw;
+      font-size: 3vh;
+      cursor: pointer;
+    }
+
+    .game-container {
+      background-color: rgb(155, 92, 9);
+      display: grid;
+      grid-template-columns: repeat(3, 16vw);
+      column-gap: 5vh;
+      row-gap: 2vh;
+      border: 2px solid rgb(106, 37, 2);
+      box-shadow: 0px 0px 10px 3px rgb(0, 0, 0);
+      padding: 3vh 3vh 3vh 3vh;
+      border-radius: 10px;
+      margin-bottom: 9vh;
+    }
+
+    .hole {
+      height: 16vw;
+      width: 16vw;
+      background-image: url("./img/beer-off.png");
+      background-size: 100% 100%;
+      background-position: 0.5vw;
+      border: 5px solid rgb(30, 30, 30);
+      cursor: pointer;
+      border-radius: 75px;
+    }
+
+    .mole {
+      background-size: 100% 100%;
+      background-position: 0.5vw;
+      background-image: url("./img/beer-on.png");
+    }
+
+    .milk {
+      background-size: 100% 100%;
+      background-position: 0.5vw;
+      background-image: url("./img/milk.png");
+    }
+
+    .wine {
+      background-size: 100% 100%;
+      background-position: 0.5vw;
+      background-image: url("./img/wine.png");
+    }
+
+    .rush-blur {
+      filter: blur(5px);
+      /* Blur effect during rush hour */
+    }
+  }
+
