@@ -13,7 +13,6 @@ function drawTable(items) {
 
 export async function fetchAndDrawTable() {
   const items = await getItems();
-
   drawTable(items);
 }
 

@@ -31,24 +31,23 @@ body {
 .game-layout {
   display: flex;
   justify-content: space-between;
-  
-  width: 80%;
-  padding: 20px;
+  width: 90vw;
+  padding: 2vw;
 }
 
 
 .left-side {
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 2vw;
   background: rgba(255, 255, 255, 0.8);
     /* Light transparent background */
   border-radius: 10px;
-  margin: 5vw 3vw 10vw 3vw;
-  padding: 5vw 2vw 5vw 2vw;
-  width: 12vw;
+  height: 50%;
+  padding: 1vw;
 
 }
 /* .button-container{
@@ -60,6 +59,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 3;
 }
 
 button{
@@ -147,19 +147,20 @@ button{
 
 .Leaderboard{
   display: flex;
+  flex: 1;  
+  height: 50%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2vw;
+  gap: 0.5vw;
   background: rgba(255, 255, 255, 0.8);
 
   border-radius: 10px;
-  margin: 5vw 3vw 10vw 3vw;
   padding: 2vw 2vw 5vw 2vw;
 }
 
 @media only screen and (max-width: 1025px) {
-  #Title {
+  #Title {    
       font-size: 9vw;
       margin-bottom: -2%;
       margin-top: 6%;

@@ -23,9 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let normalScoreCounter = 0; // Counter for points outside rush hour
   let isRushHour = false;
   let gameOver = true;
-
-  
-
+  let gameOverInterval;
 
   function activateRushHour() {
     isRushHour = true; // Indicate that rush hour is on
@@ -155,7 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
           normalScoreCounter = 0;
           console.log("hello guy");
           activateRushHour(); // Start rush hour
-          
         }
       }
     }
@@ -185,39 +182,47 @@ document.addEventListener("DOMContentLoaded", function () {
       timerDisplay.textContent = `Time: ${timer}s`;
 
       if (timer <= 0) {
-        clearInterval(countdown);
         gameOver = true;
+        clearInterval(countdown);
         // alert(`Game Over!\nYour final score: ${score}`);
         startButton.disabled = false; // Enable the start button
         endButton.disabled = true;
       }
     }, 1000);
-    
 
-    if (!gameOver){
-        moleInterval = setInterval(() => {
-          if (isRushHour) {
-            switchMoleOrMilk(); // Switch between mole and milk during rush hour
-          } else {
-            comeoutMole(); // Normal mode, only moles
-          }
-        }, 1000);
-        milkInterval = setInterval(comeoutMilk, 3000); // Milk appears every 4 seconds
-        wineInterval = setInterval(comeoutWine, 6000);
-    }
-    
+    gameOverInterval = setInterval(() => {
+      if (gameOver) {
+        endGame();
+      }
+    }, 1000);
+    milkInterval = setInterval(comeoutMilk, 3000); // Milk appears every 4 seconds
+    wineInterval = setInterval(comeoutWine, 6000);
+    moleInterval = setInterval(() => {
+      if (isRushHour) {
+        switchMoleOrMilk(); // Switch between mole and milk during rush hour
+      } else {
+        comeoutMole(); // Normal mode, only moles
+      }
+    }, 1000);
   }
 
   function endGame() {
     gameOver = true;
+    console.log("End Game");
+    clearInterval(gameOverInterval);
     clearInterval(countdown);
     clearInterval(moleInterval);
     clearInterval(milkInterval); // Ensure all intervals are cleared
     clearInterval(wineInterval);
     clearTimeout(rushHourTimeout); // Clear rush hour timeout
-
+    Array.from(document.getElementsByClassName("hole")).forEach((val) => {
+      val.classList.remove("mole");
+      val.classList.remove("milk");
+      val.classList.remove("wine");
+    });
+    // console.log(username + score);
     handleCreateItem(username, score);
-    //alert(`Game Ended!\nYour final score: ${score}`);
+
     startButton.disabled = false; // Enable the start button after game ends
     endButton.disabled = true;
   }
@@ -226,6 +231,6 @@ document.addEventListener("DOMContentLoaded", function () {
   endButton.addEventListener("click", endGame);
 });
 endButton.addEventListener("click", Endfrombutton());
-  function Endfrombutton(){
-    gameOver=true ;
-  }
+function Endfrombutton() {
+  gameOver = true;
+}
