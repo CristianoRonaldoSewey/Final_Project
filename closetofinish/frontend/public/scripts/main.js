@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const gameContainer = document.getElementById("gameContainer"); // Check that this ID matches in the HTML
   const title = document.getElementById("Title"); // Access the title element
   fetchAndDrawTable();
-
   var urlParams = new URLSearchParams(window.location.search);
   var username = urlParams.get("username");
   console.log(username);
@@ -25,6 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let isRushHour = false;
   let gameOver = true;
 
+  
+
+
   function activateRushHour() {
     isRushHour = true; // Indicate that rush hour is on
     scoreDisplay.style.color = "red";
@@ -33,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     gameContainer.classList.add("rush-blur"); // Optional visual indication
 
     // Start the switching process only during rush hour
-    rushHourSwitchInterval = setInterval(switchMoleOrMilk, 1000); // Switch every second
+    let rushHourSwitchInterval = setInterval(switchMoleOrMilk, 1000); // Switch every second
 
     // Schedule the end of rush hour
     rushHourTimeout = setTimeout(() => {
@@ -185,24 +187,29 @@ document.addEventListener("DOMContentLoaded", function () {
       if (timer <= 0) {
         clearInterval(countdown);
         gameOver = true;
-        alert(`Game Over!\nYour final score: ${score}`);
+        // alert(`Game Over!\nYour final score: ${score}`);
         startButton.disabled = false; // Enable the start button
         endButton.disabled = true;
       }
     }, 1000);
+    
 
-    moleInterval = setInterval(() => {
-      if (isRushHour) {
-        switchMoleOrMilk(); // Switch between mole and milk during rush hour
-      } else {
-        comeoutMole(); // Normal mode, only moles
-      }
-    }, 1000);
-    milkInterval = setInterval(comeoutMilk, 3000); // Milk appears every 4 seconds
-    wineInterval = setInterval(comeoutWine, 6000);
+    if (!gameOver){
+        moleInterval = setInterval(() => {
+          if (isRushHour) {
+            switchMoleOrMilk(); // Switch between mole and milk during rush hour
+          } else {
+            comeoutMole(); // Normal mode, only moles
+          }
+        }, 1000);
+        milkInterval = setInterval(comeoutMilk, 3000); // Milk appears every 4 seconds
+        wineInterval = setInterval(comeoutWine, 6000);
+    }
+    
   }
 
   function endGame() {
+    gameOver = true;
     clearInterval(countdown);
     clearInterval(moleInterval);
     clearInterval(milkInterval); // Ensure all intervals are cleared
@@ -218,3 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
   startButton.addEventListener("click", startGame);
   endButton.addEventListener("click", endGame);
 });
+endButton.addEventListener("click", Endfrombutton());
+  function Endfrombutton(){
+    gameOver=true ;
+  }
